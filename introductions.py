@@ -28,17 +28,17 @@ a,b,c:500,0,500
 # print("--------------------------------------------")
 
 #为了让执行时间更短，提出第二种算法  双重循环
-import time
-start_time = time.time()
-for a in range(0,1001):
-    for b in range(0,1001):
-        c = 1000 - a - b
-        if a**2 + b**2 == c**2:
-            print("a,b,c:%d,%d,%d"%(a,b,c))
+# import time
+# start_time = time.time()
+# for a in range(0,1001):
+#     for b in range(0,1001):
+#         c = 1000 - a - b
+#         if a**2 + b**2 == c**2:
+#             print("a,b,c:%d,%d,%d"%(a,b,c))
 
-end_time = time.time()
+# end_time = time.time()
 
-print("执行时间是：%f"%(end_time-start_time))
+# print("执行时间是：%f"%(end_time-start_time))
 
 
 '''
@@ -70,9 +70,95 @@ a,b,c:500,0,500
     4.最终算法用什么去衡量？
         时间复杂度
     5.表示法：大O记法
-        O(n^3)
+        假设计算机执行算法的每个基本操作的时间是固定的一个时间单位，那么有多少个基本操作就代表会花费多少时间单位，虽然对于不同的机器环境而言， 确切的时间单位是不同的， 但是对与算法进行多少个基本操作在规模数量级上是相同的，因此，可以忽略机器的环境而客观的反应算法的时间效率
+        对于算法的时间效率，用“大o记法”
+
+        O(n^3)  100n^2  10000n^2
+
         O(n^2)
+    6.时间复杂度分类
+        最优时间复杂度：算法完成工作最少需要多少基本操作（过于理想化，没什么参考价值）
+        最坏时间复杂度：。。。。最多。。。（提供了一种保证,表明算法在此程度的基本操作中一定能完成工作）
+        平均时间复杂度：。。。。平均。。。（对算法整体一个全面的评价，但是这种衡量方式没有保证，）
+        
+        我们关注算法的最坏情况！！！ ———— 最坏时间复杂度
+
+    7.时间复杂度的几条基本计算规则
+        基本操作，也就是只有常数项，认为其时间复杂度为（0，1）
+        顺序结构，时间复杂度按加法进行计算
+        循环结构，时间复杂度按乘法进行计算
+        分支：取最大值
+        判断一个算法的效率时，只需要关注操作数量的最高次项，其他次要项和常数项可以忽略
+        没有特殊情况下，我们分析的都是最坏时间复杂度
+    8.练习
+        12                                                          O (1)   
+        zn+3                                                        O (n)
+        3n^2 + 2n + 1                                               O (n^2)
+        5log2n + 20                                                 O (logn)
+        2n + 5log2n + 20                                            O (nlogn)
+        100000n^2 + 2*n^3 + 4                                       O (n^3)
+        2^n                                                         O (2^n)
+
+        O(1)  O(logn)  O(n)  O(nlogn) O(n^3)  O(n^3) O(2^n)  O(n!)  O(n^n)  
+'''
+
+# 作业：计算前1000 个正整数的和（2中算法）
+
+# import time
+
+
+# def sum_of_n(n):
+#     start_time = time.time()
+
+#     the_sum = 0 
+#     for i in range(1,n+1):
+#         the_sum = the_sum + 1
+    
+#     end_time = time.time()
+#     return the_sum,end_time - start_time
+
+# # for i in range(0,5):
+# #     print(sum_of_n(100000000))
+# print(sum_of_n(100000000))
+# print("---------------------------")
+# def sum_of_n2(n):
+#     return (n*(n+1))/2
+
+# start = time.time()
+# print(sum_of_n(100000000))
+
+# end=time.time()
+# print(end-start)
 
 '''
 
+练习：编写函数求出列表中的最小值 
+要求：
+函数1 O(n^2)   两两比较
+函数2 O(n)     设置一个临时变量
 
+'''
+my_list = [1000,3,4,9,6,8,100]
+def get_min(my_list):
+    for i in range(len(my_list)):
+        print(i)
+        for j in range(len(my_list)):
+            print(j)
+
+            if my_list[i] > my_list[j]:
+                break
+            else:
+                
+                return my_list[i]
+print(get_min(my_list))
+
+
+def get_min2():
+    min_num = my_list[0]
+
+    for i in range(len(my_list)):
+        if my_list[i]<min_num:
+            min_num=my_list[i]
+    return min_num[i]
+
+print(get_min2(my_list))
