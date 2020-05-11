@@ -43,15 +43,15 @@ num_list[0]+num_list[1:]
 
 '''
 # 自身调用自身的函数叫做 --递归函数
-def list_sum(num_list):
-    #函数结束运行的必要条件，否则就是一个死循环
-    if len(num_list)==1:
-        return num_list[0]
-    else:
-        print(num_list[0]+list_sum(num_list[1:]))
-        return num_list[0]+list_sum(num_list[1:])
+# def list_sum(num_list):
+#     #函数结束运行的必要条件，否则就是一个死循环
+#     if len(num_list)==1:
+#         return num_list[0]
+#     else:
+#         print(num_list[0]+list_sum(num_list[1:]))
+#         return num_list[0]+list_sum(num_list[1:])
 
-print(list_sum([1,2,3,4,5,6,7]))
+# print(list_sum([1,2,3,4,5,6,7]))
 
 
 '''
@@ -65,6 +65,19 @@ print(list_sum([1,2,3,4,5,6,7]))
     4+sum(6,8,10)
     6+sum(8,10)
     8+sum(10)
-    2.计算某个数的阶乘的递归算法
-    
+    2.计算某个数的阶乘的递归算法（最合适的基本结束条件） 0 的阶乘等于1 
+
+    5！ = 5*4*3*2*1
+
+
+
 '''
+
+def fact(n):
+    if n==1 or  n==0:
+        return 1
+    
+    else:    
+        return n*fact(n-1)
+
+print(fact(0))
