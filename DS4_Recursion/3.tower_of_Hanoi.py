@@ -40,3 +40,73 @@ def moveDisk(fromPloe,toPloe):
     print("移动盘子从",fromPloe,"到",toPloe)
 
 move(5,"A","B","C")
+
+
+'''
+迷宫:参考LeetCode 1210 题 穿过迷宫的最少移动次数
+1.从初始位置尝试向上走一步，从此开始递归
+2.如果上面走不通则尝试走下面，再开始递归
+3.上下都不通，走左边，再开始递归
+4.上下左都不通，走右边，再开始递归
+
+
+四种基本情况
+1，碰到“墙壁”方格被占用无法通行
+2，方格被访问过，未避免陷入循环不在此位置继续寻找
+3 碰到边缘 表示成功
+4 四个方向探索失败游戏失败
+
+turtle 
+
+__init__  用来读取迷宫的数据 初始化迷宫内部  并找到精灵的初始位置
+
+draw_maze 用来在屏幕上绘制迷宫
+
+update_position  用来更新迷宫的状态和游戏精灵的位置
+
+is_exit 用来判断当前位置是否是出口
+
+
+
+
+'''
+# 迷宫的地图  从txt 文件中获取  地图是一个只包含：+ 空格的文件
+
+# turtle  GUI 库 绘制地图
+# 用到的绘制迷宫的符号: + 空格
+
+class Maze():
+    def __init__(self,mazeFileName):
+        rowsInMaze = 0
+        columnsMaze = 0
+        self.mazeList = []
+
+        mazeFile = open(mazeFileName,"r")
+        for line in mazeFile:
+            rowList = []
+            col = 0
+            for ch in line[:-1]:
+                rowList.append(ch)
+                if ch=="Q":
+                    self.startRow = rowsInMaze
+                    self.starCol = col
+                col = col+1
+            rowsInMaze = rowsInMaze+1
+            self.mazeList.append(rowList)
+            columnsMaze = len(rowList)
+        self.rowsInMaze = rowsInMaze
+        self.columnsInMaze=columnsMaze
+        self.xTranslate = columnsMaze
+        self.yTranslate = rowsInMaze
+        self.t = Turtle()
+        setup(with=600,height = 600)
+        setworldcoordinates(-(columnsMaze-1)/2-.5,
+                            -(rowsInMaze-1)/2-.5,
+                            (columnsMaze-1)/2+.5,
+                            (columnsMaze-1)/2+.5)
+        
+
+
+
+
+
