@@ -115,4 +115,42 @@ print(orderedSequentialSearch(alist,50))
 #二分搜索
 
 def binarySearch(alist,item):
-    pass
+    # 起始点
+    first = 0  
+    # 结束点
+    last =  len(alist)-1
+    found = False
+    while first <= last and not found:
+        midpoint =  (first+last)//2
+        print(midpoint)
+        if alist[midpoint]==item:
+            found = True
+        else:
+            if item < alist[midpoint]:
+                last = midpoint-1
+            else:
+                first = midpoint+1
+    return found
+
+alist=[15,16,17,18,19,22,23,24,25]
+print(binarySearch(alist,19))
+
+
+# 递归二分搜素
+
+def dibinarySearch(alist,item):
+    if len(alist)==0:
+        return False
+    else:
+        midpoint = len(alist)//2
+        if alist[midpoint] == item:
+            return True
+        else: 
+            if item<alist[midpoint]:
+                return dibinarySearch(alist[:midpoint],item)
+            else:
+                return dibinarySearch(alist[midpoint+1:],item)
+
+
+alist=[15,16,17,18,19,22,23,24,25]
+print(dibinarySearch(alist,50))
