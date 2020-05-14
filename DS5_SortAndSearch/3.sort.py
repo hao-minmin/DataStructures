@@ -1,4 +1,44 @@
+
+
+# def bubbleSort(alist):
+#     for passnum in range(len(nums)-1,0,-1):
+#         for i in range(len(nums)-1):
+#             if nums[i] > nums[i+1]:
+#                 temp = nums[i]
+#                 nums[i]=nums[i+1]
+#                 nums[i+1]=temp
+# nums = [5,2,3,1,9]
+# bubbleSort(nums)
+# print(nums)
+
+# 选择排序
+def seletcSort(alist):
+
+    for fillslot in range(len(nums)-1,0,-1):
+
+        positionMax=0
+        for location in range(1,fillslot+1):
+            if nums[location]>nums[positionMax]:
+                positionMax=location
+        temp = nums[fillslot]
+
+        nums[fillslot] = nums[positionMax]
+        nums[positionMax] = temp
+
+nums = [5,2,3,1,0]
+seletcSort(nums)
+print(nums)
+
+
+# bubbleSort(nums)
+# print(nums)
+
+
 '''
+    leetCode 912题   排序数组
+    给一个整数数组nums 将数组升序排列
+    
+
     [54,26,93,17,77,31,44,55,20]
     一、冒泡排序:对一个列表多次遍历，比较相邻的两项，并且交换顺序排错的项。
         每对列表进行一次遍历，就有一个最大项排在了正确的位置，大体上讲，
@@ -65,18 +105,56 @@ print(alist)
         第7次遍历   [20,17,26,31,44,54,55,77,93]   26
         第8次遍历   [17,20,26,31,44,54,55,77,93]   20
 '''
-def seletcSort(alist):
-    for fillslot in range(len(alist)-1,0,-1):
-        positionMax = 0
+# def seletcSort(alist):
+#     for fillslot in range(len(alist)-1,0,-1):
+#         positionMax = 0
         
-        for location in range(1,fillslot+1):
-            if alist[location] > alist[positionMax]:
-                positionMax = location
+#         for location in range(1,fillslot+1):
+#             if alist[location] > alist[positionMax]:
+#                 positionMax = location
 
-        temp = alist[fillslot]
-        alist[fillslot] = alist[positionMax]
-        alist[positionMax] = temp
+#         temp = alist[fillslot]
+#         alist[fillslot] = alist[positionMax]
+#         alist[positionMax] = temp
 
-alist = [26,54,93,17,77,31,44,55,20]
-seletcSort(alist)
-print(alist)
+# alist = [26,54,93,17,77,31,44,55,20]
+# seletcSort(alist)
+# print(alist)
+
+
+'''
+三、插入排序 :总是保持一个位置靠前的已经排好的字表【54】
+[26,93,17,77,31,44,55,20],
+然后每一个新的数据项被“插入”到前面的字表中，排好的第一个字表就增加了一项
+
+
+alist=[54,26,93,17,77,31,44,55,20]
+
+分成两个字表[54][26,93,17,77,31,44,55,20]
+
+第一步    [26,54]  [93,17,77,31,44,55,20] 插入26
+第二步    [26,54,93]  [17,77,31,44,55,20] 插入93
+第三步    [17,26,54,93]  [77,31,44,55,20] 插入17
+第四步    [17,26,54,77,93]  [31,44,55,20] 插入77
+第五步    [17,26,31,54,77,93]  [44,55,20] 插入31
+第六步    [17,26,31,44,54,77,93]  [55,20] 插入44
+第六步    [17,26,31,44,54,55,77,93]  [20] 插入55
+第六步    [17,20,26,31,44,54,55,77,93]  [] 插入20
+
+'''
+
+# def insertSort(alist):
+#     for index in range(1,len(alist)):
+#         currentValue =  alist[index]
+#         position = index
+
+#         while position>0 and alist[position-1] > currentValue:
+#             alist[position] = alist[position-1]
+#             position=position-1
+#             alist[position]=currentValue
+
+#         print(index)
+
+# alist=[54,26,93,17,77,31,44,55,20]
+# insertSort(alist)
+# print(alist)
