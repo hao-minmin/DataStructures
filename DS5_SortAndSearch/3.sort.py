@@ -105,21 +105,21 @@ print(alist)
         第7次遍历   [20,17,26,31,44,54,55,77,93]   26
         第8次遍历   [17,20,26,31,44,54,55,77,93]   20
 '''
-# def seletcSort(alist):
-#     for fillslot in range(len(alist)-1,0,-1):
-#         positionMax = 0
+def seletcSort(alist):
+    for fillslot in range(len(alist)-1,0,-1):
+        for location in range(1,fillslot+1):
+            positionMax = 0
+            if alist[location] > alist[positionMax]:
+                positionMax = location
+
+        temp = alist[fillslot]
+        alist[fillslot] = alist[positionMax]
+        alist[positionMax] = temp
         
-#         for location in range(1,fillslot+1):
-#             if alist[location] > alist[positionMax]:
-#                 positionMax = location
 
-#         temp = alist[fillslot]
-#         alist[fillslot] = alist[positionMax]
-#         alist[positionMax] = temp
-
-# alist = [26,54,93,17,77,31,44,55,20]
-# seletcSort(alist)
-# print(alist)
+alist = [26,54,93,17,77,31,44,55,20]
+seletcSort(alist)
+print(alist)
 
 
 '''
@@ -158,3 +158,75 @@ alist=[54,26,93,17,77,31,44,55,20]
 # alist=[54,26,93,17,77,31,44,55,20]
 # insertSort(alist)
 # print(alist)
+
+
+'''
+    四、希尔排序（缩小间隔排序）：以插入排序为基础，将原来要排序的列表划分成一些字列表，
+    再对每一个字列表执行插入操作，从而实现对插入排序性能的改造
+
+    关键：划分子列表的特定方法
+    
+    alist=[54,26,93,17,77,31,44,55,20]
+
+    1.以2为间隔来划分 分成3个字列表
+
+        [54,17,44] [17,26,93,44,77,31,54,55,20]
+        [26,77,55] [17,26,93,44,55,31,54,77,20]
+        [93,31,20] [17,26,20,44,55,31,54,77,93]
+        
+        再进行标准插入排序：[17][26,20,44,55,31,54,77,93]
+        优化了对比和移动的次数 
+    
+    2.以2  为间隔来划分，分成5个字列表
+    [54,26,93,17,77,31,44,55,20]
+    54 17 44
+
+
+
+
+
+
+
+
+
+
+'''
+
+# leetCode 147 题对链表进行排序
+def shellSort(alist):
+    sublistcount = len(alist)//3
+    print(sublistcount)
+    for i in range(sublistion):
+        gapInsertionSort(alist,i,3)
+    print("希尔排序后:",alist)
+    sublistcount=sublistcount//2
+
+
+# 特定间隔分子列表，然后执行标准插入排序
+
+
+def gapInsertionSort(alist, gap):
+
+    gap2 = len(alist)//gap
+    
+
+    while gap2:
+        # print('gap2的值为：',gap2)
+        for i in range(gap2, len(alist)):
+            # print('i的值为：', i)
+
+            while i >= gap2 and alist[i-gap2] > alist[i]:
+                alist[i-gap2], alist[i] = alist[i], alist[i-gap2]
+                # print(alist)
+
+                i -= gap2
+        gap2//=gap
+
+       
+
+    return alist
+
+
+alist = [54,26,93,17,77,31,44,55,20]
+
+print(gapInsertionSort(alist, 3))
